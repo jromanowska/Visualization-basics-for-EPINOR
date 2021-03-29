@@ -1,0 +1,120 @@
+---
+title: "Basics of data visualization"
+author: "Julia Romanowska"
+institute: "BIOS, UiB"
+date: "20.05.2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: 16:9
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(xaringanthemer)
+style_solarized_light(
+  code_font_size = "0.7rem",
+  code_inline_font_size = "0.9rem"
+)
+
+library(xaringanExtra)
+use_clipboard()
+use_scribble()
+use_tachyons()
+# use_webcam()
+use_fit_screen()
+use_panelset()
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  message = FALSE,
+  warning = FALSE,
+  comment = "",
+  cache = F,
+  echo = FALSE
+)
+library(flipbookr)
+library(tidyverse)
+library(palmerpenguins)
+
+library(countdown)
+```
+
+class: middle, center
+
+## Julia Romanowska
+
+### bioinformatics/biostatistics, visualization
+
+### co-founder of R-Ladies Bergen
+
+https://jrom.bitbucket.io/homepage/
+
+---
+
+class: inverse, bottom
+
+## What this will *not* be:
+
+- not a ggplot/R/programming course
+- not an art course
+- not much about color theory
+- not much about tidying data
+
+---
+
+class: inverse, right, bottom
+
+## What this will be:
+
+- how to show your data to various audience
+- how to choose the story in your data
+- how to __start__ with ggplot2
+- where to search for help
+
+---
+
+class: center
+
+# Warmup
+
+```{r}
+countdown(minutes = 5, seconds = 0)
+```
+
+## TASK
+
+> Grab a piece of paper and a pencil and draw this data!
+
+```{r}
+knitr::kable(
+tibble::tribble(
+~DATE, ~CAPACITY, ~DEMAND,
+"2019-04", 29263, 46193,
+"2019-05", 28037, 49131,
+"2019-06", 21596, 50124,
+"2019-07", 25895, 48850,
+"2019-08", 25813, 47602,
+"2019-09", 22427, 43697,
+"2019-10", 23605, 41058,
+"2019-11", 24263, 37364,
+"2019-12", 24243, 34364
+)
+)
+```
+
+???
+
+# Questions
+
+- was it easy to imagine the data?
+- how did you start drawing?
+- did you change your point of view of the data _after_ you've sketched it?
+- what questions arised when you saw the data plotted?
+
+
