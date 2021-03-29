@@ -36,13 +36,15 @@ knitr::opts_chunk$set(
   warning = FALSE,
   comment = "",
   cache = F,
-  echo = FALSE
+  echo = FALSE,
+  dpi = 150
 )
 library(flipbookr)
 library(tidyverse)
 library(palmerpenguins)
 
 library(countdown)
+library(fontawesome)
 ```
 
 class: middle, center
@@ -116,5 +118,254 @@ tibble::tribble(
 - how did you start drawing?
 - did you change your point of view of the data _after_ you've sketched it?
 - what questions arised when you saw the data plotted?
+
+---
+
+## Critique
+
+```{r}
+countdown(minutes = 5, seconds = 0)
+```
+
+### GROUP TASK
+
+> How can we improve this figure?
+
+<img style="width:60%;" src="improve_graph.png" alt="Bar graph showing length of hospital stay after surgeries in 2019. The data is divided into groups with length of stay below 24hrs, between 24 and 36 hrs, between 36 and 48 hrs, between 48 and 59 hrs, and above 60 hrs. The graph shows increasing share of the shortest hospital stay with time.">
+<!-- ![https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-graph](improve_graph.png) -->
+https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-graph
+
+---
+
+## Assisting questions:
+
+- is the data correctly represented in the figure?
+- is the title meaningful?
+- is the graph self-explanatory?
+- can you easily draw conclusion from the graph?
+- what about use of colors?
+
+---
+
+## Data viz _design_
+
+
+???
+
+It's not enough to _show_ your data - you need to carefuly pick the datapoints you want to focus on,
+think about the fonts, the axes, the orientation of the plot, the colors(!), and title/captions.
+
+All this process is called _designing_ your visual.
+
+And as with any other design or planning, it all starts with...
+
+--
+
+- `r fa("pencil-alt")` pen & `r fa("sticky-note")` paper
+
+???
+
+When you grab a blank sheet of paper, you're getting free of all the limitations that a tool of your choice can give you.
+And of the frustrations as well, if you're only beginning to learn the tool!
+With a pen and paper, you may focus on what's important for the presentation of the data...
+
+--
+
+- `r fa("question-circle")` what the data tells me?
+
+???
+
+Normally, we would plot data when we want to explore some variables or when we have results of an analysis.
+One thing is known: we don't know how the data look like. We may know how it _should_ look like, though.
+That's why we may start designing with one type of plot in mind, but in the end the plot might look completely different!
+That's why it's important to draw by hand some sketches and think about the question here.
+When we finally have plotted something and understood the message behind the data, we need to improve the visual.
+
+--
+
+- **declutter** + **explain**
+
+???
+
+- do we really need all the points?
+- what about the axis ticks? and axis labels?
+- can we include a take-home message in title plot/caption?
+- is the legend in right place?
+- have we used **color** wisely? (I will talk about the colors next)
+
+--
+
+> Who's my target audience?
+
+???
+
+This entire process needs to be repeated when we present our plot for different groups of people!
+
+This process is very important and one could talk about this for hours. I've just mentioned important points, and gathered some references for you to read if you're interested.
+
+---
+
+## Choosing medium and audience
+
+- popular science *vs.* scientific article
+- manuscript *vs.* presentation
+- font size, level of details
+
+<img src="selcuk_corruption.png" style="width:30%;"> <img src="economist_graph.png" style="width:45%;">
+
+src: *Akcay, S. (2006). Corruption and human development. Cato Journal 26(1), 29-48*; 
+https://www.economist.com/graphic-detail/2011/12/02/corrosive-corruption
+
+---
+
+## Choosing color
+
+- recommended paper:    
+[Crameri, F., Shephard, G. E., & Heron, P. J. *(2020)*. The misuse of colour in science communication. *Nature Communications*, 11(1), 1–10.](https://www.nature.com/articles/s41467-020-19160-7)
+
+- good tool for choosing palette: [ColorBrewer](https://colorbrewer2.org/)    
+by Cynthia Brewer
+
+- wrong color palette can _distort_ the data and _change_ the meaning of your visual
+
+---
+
+class: inverse, left, bottom
+
+## SUMMARY
+
+### know your data
+
+???
+
+So what we've learned til now:
+
+- spend time on exploring the data and check what the data tells you
+
+--
+
+### know your audience
+
+???
+
+- when critiquing the plot, have in mind who will look at it and under what circumstances!
+- you can't show the same plot in a scientific journal article, and during a presentation for students!
+
+--
+### _design_ your visual
+
+???
+
+- use time to design the visual
+- don't just show all the data you have, but choose carefully what to show and how so that the message is clear
+
+And now, let's get our hands dirty with some code
+
+---
+
+class: inverse, right, middle
+
+## Example plot with ggplot2
+
+---
+
+## Data
+
+<div style="float: right; position: fixed; right: 10px; top: 10px;">
+<img style="float: right; position: relative; width: 120px" src="palmer_penguins_logo.png" alt="ggiraph"/><br>
+</div>
+
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
+
+<br><br><br>
+
+```{r}
+penguins
+```
+
+???
+
+I will be using this simple dataset with morphological data of penguins living on a certain island.
+
+--
+
+> **IMPORTANT** start with tidy data!
+
+???
+
+I will not spend much time on this because we don't have time, but remember one thing:
+you need to start visualizing with _tidy_ dataset! What this means?
+
+--
+
+**each row is an observation, each column is a variable**
+
+---
+
+```{r penguins_species, include = FALSE}
+ggplot(data = penguins) +
+  aes(x = bill_length_mm,
+    y = bill_depth_mm) +
+  geom_point(
+    aes(color = species,
+    shape = species),
+      size = 2) + 
+  geom_smooth(method = "lm",
+    se = FALSE,
+    aes(color = species))
+penguins_default <- last_plot()
+```
+
+`r chunk_reveal("penguins_species", break_type = "auto", chunk_options = "warning = FALSE", font_size_code = "50%", widths = c(0.5, 0.45))`
+
+???
+
+Basics of ggplot2:
+
+- layers
+- 'aesthetics' + data + geom
+
+---
+
+```{r penguins_species2, include = FALSE}
+penguins_default +
+  scale_color_manual(
+    values = c("darkorange",
+               "darkorchid",
+               "cyan4")
+    ) +
+  facet_grid(rows = vars(species)) +
+  labs(title = 
+    "Penguin species differentation") +
+  labs(subtitle = 
+    "based on bill depth and bill length") +
+  xlab("bill length (mm)") +
+  ylab("bill depth (mm)") +
+  theme_minimal() +
+  theme(
+    plot.title =
+      element_text(face = "bold"),
+    plot.subtitle =
+      element_text(face = "italic")) +
+  theme(legend.position = "none")
+```
+
+`r chunk_reveal("penguins_species2", break_type = "auto", chunk_options = "warning = FALSE", font_size_code = "50%", widths = c(0.5, 0.45))`
+
+???
+
+OK, to był podstawowy graf. Teraz zróbmy go wyjątkowego.
+
+- zmiana kolorystyki,
+- rozbicie na podgrafy wg.gatunku,
+- dodanie tytułu
+- podpisy na osiach
+- wygląd grafu
+
+---
+
+## Extensions
+
+[ggextensions](https://exts.ggplot2.tidyverse.org/gallery/)
 
 
