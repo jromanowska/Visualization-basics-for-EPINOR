@@ -45,13 +45,20 @@ library(palmerpenguins)
 
 library(countdown)
 library(fontawesome)
+library(beepr)
 ```
 
 class: middle, center
 
+## `r fa("hand-peace")`
+
 ## Julia Romanowska
 
-### bioinformatics/biostatistics, visualization
+<br>
+
+### bioinformatics/biostatistics `r fa("laptop-code")`
+
+### visualization `r fa("image")`
 
 ### co-founder of R-Ladies Bergen
 
@@ -63,7 +70,7 @@ class: inverse, bottom
 
 ## What this will *not* be:
 
-- not a ggplot/R/programming course
+- not an R/programming course
 - not an art course
 - not much about color theory
 - not much about tidying data
@@ -81,12 +88,10 @@ class: inverse, right, bottom
 
 ---
 
-class: center
-
 # Warmup
 
 ```{r}
-countdown(minutes = 5, seconds = 0)
+countdown(minutes = 5, seconds = 0, warn_when = 15, top = "0", play_sound = TRUE)
 ```
 
 ## TASK
@@ -124,7 +129,7 @@ tibble::tribble(
 ## Critique
 
 ```{r}
-countdown(minutes = 5, seconds = 0)
+countdown(minutes = 5, seconds = 0, warn_when = 15, top = "0", play_sound = TRUE)
 ```
 
 ### GROUP TASK

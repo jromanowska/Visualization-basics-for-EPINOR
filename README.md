@@ -4,3 +4,7 @@ Data, scripts, and presentation about visualization of data. Short workshop for 
 [**Presentation**](presentation_JRom.html)
 
 [**Source**](https://github.com/jromanowska/Visualization-basics-for-EPINOR/)
+
+[**Tutorial**](https://github.com/jromanowska/EPINORvistutorial)
+
+[**Useful links**](references.html)
