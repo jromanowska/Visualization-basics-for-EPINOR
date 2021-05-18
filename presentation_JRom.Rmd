@@ -145,9 +145,13 @@ https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-gra
 ## Assisting questions:
 
 - is the data correctly represented in the figure?
+
 - is the title meaningful?
+
 - is the graph self-explanatory?
+
 - can you easily draw conclusion from the graph?
+
 - what about use of colors?
 
 ---
