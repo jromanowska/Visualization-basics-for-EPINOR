@@ -22,6 +22,7 @@ style_solarized_light(
   code_inline_font_size = "0.9rem"
 )
 
+# devtools::install_github("gadenbuie/xaringanExtra")
 library(xaringanExtra)
 use_clipboard()
 use_scribble()
@@ -39,10 +40,12 @@ knitr::opts_chunk$set(
   echo = FALSE,
   dpi = 150
 )
+# devtools::install_github("EvaMaeRey/flipbookr")
 library(flipbookr)
 library(tidyverse)
 library(palmerpenguins)
 
+# devtools::install_github("gadenbuie/countdown")
 library(countdown)
 library(fontawesome)
 library(beepr)
@@ -64,6 +67,16 @@ class: middle, center
 
 https://jrom.bitbucket.io/homepage/
 
+???
+
+Couple of words about me - I am a bioinformatician/biostatistician, I love
+visualizing data and programming, and I am a co-founder of R-Ladies Bergen.
+We have actually a very cool meetup today at R-Ladies Bergen - if you want
+to watch some entertaining show about visualization and statistics, join
+us at 6PM!
+
+https://www.meetup.com/rladies-bergen/events/277543752/
+
 ---
 
 class: inverse, bottom
@@ -75,6 +88,14 @@ class: inverse, bottom
 - not much about color theory
 - not much about tidying data
 
+???
+
+OK - back to the talk. "Basics of data visualization". Since time is of
+essence today, I will try to keep it short. I will not teach you how to
+program, I will not teach you about artistic stuff in visualization, I
+will only touch on the color theory and I will not talk about how to create
+tidy, analysis-ready datasets.
+
 ---
 
 class: inverse, right, bottom
@@ -85,6 +106,13 @@ class: inverse, right, bottom
 - how to choose the story in your data
 - how to __start__ with ggplot2
 - where to search for help
+
+???
+
+Today, I will focus on how to adapt the visualization for various occasions,
+how to find the message you want to convey through your visualization,
+how to start with the ggplot2 R-package, which is a powerful tool, and
+where to search for help.
 
 ---
 
@@ -140,7 +168,7 @@ countdown(minutes = 5, seconds = 0, warn_when = 15, top = "0", play_sound = TRUE
 <!-- ![https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-graph](improve_graph.png) -->
 https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-graph
 
----
+???
 
 ## Assisting questions:
 
@@ -153,6 +181,10 @@ https://community.storytellingwithdata.com/exercises/how-can-we-improve-this-gra
 - can you easily draw conclusion from the graph?
 
 - what about use of colors?
+
+## Conclusions
+
+There are a lot of choices to make when creating a visualization.
 
 ---
 
@@ -198,12 +230,13 @@ When we finally have plotted something and understood the message behind the dat
 
 - do we really need all the points?
 - what about the axis ticks? and axis labels?
-- can we include a take-home message in title plot/caption?
+- can we include a take-home message in title/caption?
 - is the legend in right place?
 - have we used **color** wisely? (I will talk about the colors next)
 
 --
 
+<br>
 > Who's my target audience?
 
 ???
@@ -229,11 +262,11 @@ https://www.economist.com/graphic-detail/2011/12/02/corrosive-corruption
 
 ## Choosing color
 
-- recommended paper:    
-[Crameri, F., Shephard, G. E., & Heron, P. J. *(2020)*. The misuse of colour in science communication. *Nature Communications*, 11(1), 1–10.](https://www.nature.com/articles/s41467-020-19160-7)
-
 - good tool for choosing palette: [ColorBrewer](https://colorbrewer2.org/)    
 by Cynthia Brewer
+
+- recommended paper:    
+[Crameri, F., Shephard, G. E., & Heron, P. J. *(2020)*. The misuse of colour in science communication. *Nature Communications*, 11(1), 1–10.](https://www.nature.com/articles/s41467-020-19160-7)
 
 - wrong color palette can _distort_ the data and _change_ the meaning of your visual
 
@@ -373,8 +406,10 @@ OK, to był podstawowy graf. Teraz zróbmy go wyjątkowego.
 
 ---
 
-## Extensions
+## More...
 
-[ggextensions](https://exts.ggplot2.tidyverse.org/gallery/)
+- **Extensions:** [ggextensions](https://exts.ggplot2.tidyverse.org/gallery/)
 
+- [R-Ladies Bergen](https://join.slack.com/t/rladies-norway/shared_invite/zt-5unpqk3m-GnaNwMfr1HminEQ6vym~zA) and [R-Ladies Global](https://rladies-community-slack.herokuapp.com/) `r fa("slack")`
 
+- Some useful links: https://jromanowska.github.io/Visualization-basics-for-EPINOR/references.html
